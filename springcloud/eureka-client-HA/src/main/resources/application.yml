@@ -1,0 +1,9 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:eureka@peer1:7777/eureka,http://eureka:eureka@peer2:8888/eureka,http://eureka:eureka@peer3:9999/eureka
+server:
+  port: 8764
+spring:
+  application:
+    name: service-hello-world

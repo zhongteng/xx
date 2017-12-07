@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cw.framework.springcloud</groupId>
+	<artifactId>springcloud</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>eureka-server</module>
+		<module>eureka-client</module>
+		<module>ribbon-client</module>
+		<module>feign-client</module>
+		<module>ribbon-hystrix-client</module>
+		<module>feign-hystrix-client</module>
+		<module>zuul-client</module>
+		<module>config-server</module>
+		<module>config-client</module>
+		<module>config-eureka-server</module>
+		<module>config-eureka-client</module>
+		<module>config-eureka-amqp-client</module>
+		<module>config-eureka-amqp-server</module>
+		<module>eureka-ha-server</module>
+		<module>eureka-server-HA</module>
+		<module>eureka-client-HA</module>
+	    <module>sleuth-zipkin-server</module>
+	    <module>sleuth-zipkin-client</module>
+	    <module>sleuth-zipkin-client-backend</module>
+	    <module>sleuth-zipkin-provider</module>
+	    <module>sleuth-zipkin-consumer</module>
+  </modules>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.2.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+</project>

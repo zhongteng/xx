@@ -1,0 +1,21 @@
+spring:  
+  profiles:  
+    active: dev #指定读取的配置文件，默认读取application.yml,如果有指定的会吧默认的配置替换掉  
+security:   
+  basic:  
+    enabled: true #eureka用户是否认证  
+  user:  
+    name: eureka #eureka 用户名  
+    password: eureka #eureka 密码  
+      
+server:  
+  port: 8761  
+    
+eureka:  
+  instance:   
+    hostname: localhost #Eureka实例的主机名  
+  client:  
+    register-with-eureka: false  #在默认设置下，该服务注册中心也会将自己作为客户端来尝试注册它自己，所以我们需要禁用它的客户端注册行为  
+    fetch-registry: false  
+    service-url:  
+      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname}:${server.port}/eureka

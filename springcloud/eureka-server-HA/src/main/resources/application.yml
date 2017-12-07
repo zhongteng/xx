@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: eureka-server-cluster
+  profiles:
+    active: #指定读取的配置文件，默认读取application.yml,如果有指定的会吧默认的配置替换掉  
+security:   
+  basic:  
+    enabled: true #eureka用户是否认证  
+  user:  
+    name: eureka #eureka 用户名  
+    password: eureka #eureka 密码 
+    
+#--spring.profiles.active= 

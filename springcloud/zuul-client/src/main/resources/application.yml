@@ -1,0 +1,17 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:eureka@peer1:7777/eureka,http://eureka:eureka@peer2:8888/eureka,http://eureka:eureka@peer3:9999/eureka
+server:
+  port: 8768
+spring:
+  application:
+    name: service-zuul
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**
+      serviceId: service-ribbon-hystrix
+    api-b:
+      path: /dragonkiss/gateway/**
+      serviceId: service-feign-hystrix
