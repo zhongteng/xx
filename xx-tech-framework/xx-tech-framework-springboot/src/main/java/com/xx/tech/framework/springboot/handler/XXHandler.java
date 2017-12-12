@@ -3,7 +3,7 @@ package com.xx.tech.framework.springboot.handler;
 import org.springframework.stereotype.Component;
 
 @Component
-public class XXComponent {
+public class XXHandler {
 
 	public String hello(boolean xHello) {
 		if (xHello) {

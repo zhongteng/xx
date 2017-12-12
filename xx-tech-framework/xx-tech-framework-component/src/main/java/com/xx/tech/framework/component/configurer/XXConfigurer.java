@@ -19,18 +19,25 @@ public class XXConfigurer extends PropertyPlaceholderConfigurer implements Initi
 	
 	protected static Logger logger = LoggerFactory.getLogger(XXConfigurer.class);
 	
-	protected ConcurrentHashMap<String, String> rootConfigMap = new ConcurrentHashMap<>();
+	protected static ConcurrentHashMap<String, String> frameworkConfigMap = new ConcurrentHashMap<>();
+	
+	protected static ConcurrentHashMap<String, String> applicationConfigMap = new ConcurrentHashMap<>();
 
 	private static final String PRODUCTION_MODE = "production.mode";
 	// 缓存所有的属性配置
 	private Properties properties;
 
+	
 	public XXConfigurer() {
 
 	}
-
-	public XXConfigurer(Resource location) {
+	
+	protected void setResource(Resource location) {
 		super.setLocation(location);
+	}
+	
+	protected void setResources(Resource[] locations) {
+		super.setLocations(locations);
 	}
 
 	/**
@@ -43,14 +50,12 @@ public class XXConfigurer extends PropertyPlaceholderConfigurer implements Initi
 	@Override
 	protected void processProperties(ConfigurableListableBeanFactory beanFactory, Properties props)
 			throws BeansException {
-		System.out.println("process");
 		super.processProperties(beanFactory, props);
-
 		StringBuffer sb = new StringBuffer();
 		for (Object key : props.keySet()) {
 			String keyStr = key.toString();
 			String value = props.getProperty(keyStr);
-			rootConfigMap.put(keyStr, value);
+			applicationConfigMap.put(keyStr, value);
 			sb.append("[" +keyStr + ":" + value + "]\r\n");
 		}
 		logger.info("框架基础配置信息：\r\n{}", sb.toString());
@@ -113,8 +118,8 @@ public class XXConfigurer extends PropertyPlaceholderConfigurer implements Initi
 	 * @param key
 	 * @return
 	 */
-	public String getAllProperties() {
-		return rootConfigMap.toString();
+	public static String getAllProperties() {
+		return applicationConfigMap.toString();
 	}
 
 	@Override

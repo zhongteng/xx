@@ -8,9 +8,9 @@
 	<packaging>pom</packaging>
 
 	<modules>
-	<module>xx-tech-framework-component</module>
-	<module>xx-tech-framework-springboot</module>
-	<module>xx-tech-framework-core</module>
+		<module>xx-tech-framework-component</module>
+		<module>xx-tech-framework-springboot</module>
+		<module>xx-tech-framework-core</module>
 	</modules>
 
 	<properties>
@@ -64,28 +64,27 @@
 			<artifactId>logback-classic</artifactId>
 			<version>${logback-version}</version>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
-		<!-- <dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-context</artifactId>
-		    <version>${spring-version}</version>
-		</dependency> -->
-		
+
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>5.0.0.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>5.0.0.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
-		
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>

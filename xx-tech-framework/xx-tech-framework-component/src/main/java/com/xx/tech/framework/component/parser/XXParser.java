@@ -1,28 +1,33 @@
 package com.xx.tech.framework.component.parser;
 
+import java.io.IOException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.core.Ordered;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 
-@Component
-public class XXParser implements InitializingBean, Ordered {
+public class XXParser extends PropertyPlaceholderConfigurer implements InitializingBean {
 	
-	protected static Logger logger = LoggerFactory.getLogger(XXParser.class);
+	protected Logger logger = LoggerFactory.getLogger(XXParser.class);
 	
-	private static final String TECH_FRAMEWORK_CONFIG_ROOT_PATH = "/tech-framework.properties";
-
+	private final String XX_APPLICATION_CONFIG_ROOT_PATH = "classpath:/application/**/*.properties";
+	
+	public void parse(String path) {
+		ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+		try {
+			super.setLocations(resolver.getResources(path));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public int getOrder() {
-		// TODO Auto-generated method stub
-		return 1;
+		logger.info("XX技术框架组件管理者启动中...");
+		this.parse(XX_APPLICATION_CONFIG_ROOT_PATH);
 	}
 
 }
