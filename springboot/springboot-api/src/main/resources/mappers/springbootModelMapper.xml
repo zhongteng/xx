@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xx.springboot.dao.SpringbootDAO">
+	<select id="getMaxId" resultType="java.lang.Long">
+		SELECT MAX(user_id) FROM user_register_info
+	</select>
+	
+	<!-- <insert id="insert" parameterType="com.xx.springboot.model.SpringbootModel">
+		INSERT INTO user_register_info
+			(phone,user_id,reg_time,password,open_id,from_channel,from_product,download_channel)
+		VALUES
+			(#{phone},#{userId},#{regTime},#{password},#{openId},#{fromChannel},#{fromProduct},#{downloadChannel})
+	</insert>
+	
+	<insert id="batchInsert" parameterType="java.util.List" >
+     	INSERT INTO user_register_info
+			(phone,user_id,reg_time,password,from_channel,from_product,download_channel)
+      	VALUES
+          <foreach collection="list" item="item" index="index" separator=",">
+              (#{item.phone},#{item.userId},#{item.regTime},#{item.password},#{item.fromChannel},#{item.fromProduct},#{item.downloadChannel})
+          </foreach>
+	</insert>
+	
+	<update id="update" parameterType="com.xx.springboot.model.SpringbootModel">
+	    UPDATE user_register_info
+	       <set>
+	       		<if test="phone != null and phone != ''"> phone = #{phone},</if>
+	       		<if test="password != null and password != ''"> password = #{password},</if>
+	       		<if test="openId != null and openId != ''"> open_id = #{openId},</if>
+	       </set>
+	     WHERE user_id = #{userId} 
+	</update>
+	
+	<select id="selectOne" resultType="com.xx.springboot.model.SpringbootModel" parameterType="com.xx.springboot.model.SpringbootModel">
+		SELECT 
+			phone,user_id userId,reg_time regTime,password,open_id openId,from_channel fromChannel,from_product fromProduct,download_channel downloadChannel,
+			create_time createTime,update_time updateTime
+		FROM user_register_info
+		<where> 
+			<if test="userId != null and userId > 0">
+				user_id = #{userId}
+			</if>
+			<if test="phone != null and phone != ''">
+				AND phone = #{phone}
+			</if>
+			<if test="openId != null and openId != ''">
+				AND open_id = #{openId}
+			</if>
+		</where>
+		ORDER BY create_time LIMIT 1 
+	</select>
+	
+	<select id="selectList" resultType="com.xx.springboot.model.SpringbootModel" parameterType="com.xx.springboot.model.SpringbootModel">
+		SELECT 
+			phone,user_id userId,reg_time regTime,password,open_id openId,from_channel fromChannel,from_product fromProduct,download_channel downloadChannel,
+			create_time createTime,update_time updateTime
+		FROM user_register_info
+		<where>  
+			<if test="userId != null and userId > 0">
+				user_id = #{userId}
+			</if>
+			<if test="phone != null and phone != ''">
+				AND phone = #{phone}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectByUserId" resultType="com.xx.springboot.model.SpringbootModel" parameterType="java.lang.Long">
+		SELECT 
+			phone,user_id userId,reg_time regTime,password,open_id openId,from_channel fromChannel,from_product fromProduct,download_channel downloadChannel,
+			create_time createTime,update_time updateTime
+		FROM user_register_info
+		WHERE user_id = #{userId}
+	</select>
+	
+	<select id="selectByPhone" resultType="com.xx.springboot.model.SpringbootModel" parameterType="java.lang.String">
+		SELECT 
+			phone,user_id userId,reg_time regTime,password,open_id openId,from_channel fromChannel,from_product fromProduct,download_channel downloadChannel,
+			create_time createTime,update_time updateTime
+		FROM user_register_info
+		WHERE phone = #{phone}
+	</select>
+	
+	<select id="selectByPhoneList" resultType="com.xx.springboot.model.SpringbootModel" parameterType="java.util.List">
+		SELECT 
+			phone,user_id userId,reg_time regTime,password,open_id openId,from_channel fromChannel,from_product fromProduct,download_channel downloadChannel,
+			create_time createTime,update_time updateTime
+		FROM user_register_info
+		WHERE phone in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">   
+	        #{item}
+	    </foreach> 
+	</select> -->
+</mapper>
