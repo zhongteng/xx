@@ -13,6 +13,11 @@
 			<artifactId>springboot-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.xx.springboot</groupId>
+			<artifactId>springboot-dubbo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

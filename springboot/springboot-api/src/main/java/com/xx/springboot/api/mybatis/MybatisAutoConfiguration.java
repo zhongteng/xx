@@ -5,12 +5,12 @@ import java.util.Properties;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -33,7 +33,7 @@ import com.github.pagehelper.PageHelper;
 @AutoConfigureAfter(DataSourceAutoConfiguration.class)
 public class MybatisAutoConfiguration {
 
-	private static Log log = LogFactory.getLog(MybatisAutoConfiguration.class);
+	private static Logger logger = LoggerFactory.getLogger(MybatisAutoConfiguration.class);
 
 	@Autowired
 	private MybatisProperties properties;
@@ -79,7 +79,7 @@ public class MybatisAutoConfiguration {
 
 	@Bean
 	public PageHelper pageHelper(DataSource dataSource) {
-		log.info("注册MyBatis分页插件PageHelper");
+		logger.info("注册MyBatis分页插件PageHelper");
 		PageHelper pageHelper = new PageHelper();
 		Properties p = new Properties();
 		p.setProperty("offsetAsPageNum", "true");

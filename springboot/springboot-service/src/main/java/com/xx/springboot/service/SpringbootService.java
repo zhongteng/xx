@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dk3k.customer.dubbo.DubboCustomerInfoSpi;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.page.PageMethod;
 import com.xx.springboot.dao.SpringbootDAO;
 import com.xx.springboot.model.UserRegisterInfo;
@@ -15,6 +17,8 @@ public class SpringbootService {
 	
 	@Autowired
 	private SpringbootDAO springbootDAO;
+	@Autowired
+	private DubboCustomerInfoSpi customerSpi;
 	
 	public String hello(String phone) throws JsonProcessingException {
 		return new UserRegisterInfo(phone).toJSON();
@@ -34,6 +38,10 @@ public class SpringbootService {
 //        springbootDAO.selectByRowBounds(record, new RowBounds(0, 15));
 //        PageInfo<UserRegisterInfo> pageInfo = new PageInfo<UserRegisterInfo>(docs);
         return docs;
+    }
+    
+    public String getIdentityInfoByPhone(String phone) throws JsonProcessingException {
+    	return new ObjectMapper().writeValueAsString(customerSpi.pullIdentityInfo(customerSpi.queryUserIdByPhone(phone).getData()));
     }
 
 }

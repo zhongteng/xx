@@ -45,5 +45,9 @@ public class SpringbootController {
 		List<UserRegisterInfo> user = springbootService.getByPage(0, 15);
 		return new ObjectMapper().writeValueAsString(user);
 	}
-
+	
+	@RequestMapping(value = "getIdentityInfoByPhone", method = RequestMethod.GET, produces = "application/json")
+	public String getIdentityInfoByPhone(String phone) throws JsonProcessingException {
+		return springbootService.getIdentityInfoByPhone(phone);
+	}
 }
