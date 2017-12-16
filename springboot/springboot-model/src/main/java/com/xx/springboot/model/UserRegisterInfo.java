@@ -7,15 +7,19 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+@ApiModel(description = "用户注册信息")
 @Data
 public class UserRegisterInfo implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5756192962061349279L;
-	
+
+	@ApiModelProperty(value = "用户名", name = "name")
 	@Transient
 	private String name;
 
@@ -23,6 +27,7 @@ public class UserRegisterInfo implements Serializable {
 	protected Long userId;
 
 	/** 注册手机 **/
+	@ApiModelProperty(value = "手机号", name = "phone", required = true)
 	protected String phone;
 
 	/** 注册密码 **/
