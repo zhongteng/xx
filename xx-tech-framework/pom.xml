@@ -11,6 +11,7 @@
 		<module>xx-tech-framework-component</module>
 		<module>xx-tech-framework-springboot</module>
 		<module>xx-tech-framework-core</module>
+		<module>xx-tech-framework-dubbo</module>
 	</modules>
 
 	<properties>
