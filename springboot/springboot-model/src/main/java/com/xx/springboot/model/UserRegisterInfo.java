@@ -24,29 +24,29 @@ public class UserRegisterInfo implements Serializable {
 	private String name;
 
 	/** 客户号 **/
-	protected Long userId;
+	private Long userId;
 
 	/** 注册手机 **/
 	@ApiModelProperty(value = "手机号", name = "phone", required = true)
-	protected String phone;
+	private String phone;
 
 	/** 注册密码 **/
-	protected String password;
+	private String password;
 
 	/** 微信绑定号 **/
-	protected String openId;
+	private String openId;
 
 	/** 注册时间 **/
-	protected String regTime;
+	private String regTime;
 
 	/** 注册来源渠道 **/
-	protected String fromChannel;
+	private String fromChannel;
 
 	/** 注册来源产品 **/
-	protected String fromProduct;
+	private String fromProduct;
 
 	/** 下载渠道 **/
-	protected String downloadChannel;
+	private String downloadChannel;
 
 	public UserRegisterInfo() {
 

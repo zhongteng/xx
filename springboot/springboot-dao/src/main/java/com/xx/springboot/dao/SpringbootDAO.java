@@ -1,10 +1,12 @@
 package com.xx.springboot.dao;
 
-import com.xx.springboot.model.UserRegisterInfo;
+import org.apache.ibatis.annotations.Mapper;
 
-import tk.mybatis.mapper.common.Mapper;
+import com.xx.springboot.model.BaseMapper;
+import com.xx.springboot.model.DeviceInfo;
 
-public interface SpringbootDAO extends Mapper<UserRegisterInfo> {
+@Mapper
+public interface SpringbootDAO extends BaseMapper<DeviceInfo> {
 
 	Long getMaxId();
 }

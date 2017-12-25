@@ -1,4 +1,4 @@
-package com.xx.springboot.api.druid;
+package com.xx.springboot.model.druid;
 
 import java.sql.SQLException;
 
@@ -17,10 +17,10 @@ import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
 
 @Configuration
-public class DruidConnectionPool {
-
-	private Logger logger = LoggerFactory.getLogger(DruidConnectionPool.class);
-
+public class DruidConfiguration {
+	
+	private Logger logger = LoggerFactory.getLogger(DruidConfiguration.class);
+	
 	@Value("${spring.datasource.url}")
 	private String dbUrl;
 
@@ -74,9 +74,9 @@ public class DruidConnectionPool {
 		ServletRegistrationBean reg = new ServletRegistrationBean();
 		reg.setServlet(new StatViewServlet());
 		reg.addUrlMappings("/druid/*");
-		reg.addInitParameter("loginUsername", username);
-		reg.addInitParameter("loginPassword", password);
-		reg.addInitParameter("logSlowSql", logSlowSql);
+		reg.addInitParameter("loginUsername", this.username);
+		reg.addInitParameter("loginPassword", this.password);
+		reg.addInitParameter("logSlowSql", this.logSlowSql);
 		return reg;
 	}
 
@@ -93,26 +93,25 @@ public class DruidConnectionPool {
 	@Bean
 	public DataSource druidDataSource() {
 		DruidDataSource datasource = new DruidDataSource();
-		datasource.setUrl(dbUrl);
-		datasource.setUsername(username);
-		datasource.setPassword(password);
-		datasource.setDriverClassName(driverClassName);
-		datasource.setInitialSize(initialSize);
-		datasource.setMinIdle(minIdle);
-		datasource.setMaxActive(maxActive);
-		datasource.setMaxWait(maxWait);
-		datasource.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRunsMillis);
-		datasource.setMinEvictableIdleTimeMillis(minEvictableIdleTimeMillis);
-		datasource.setValidationQuery(validationQuery);
-		datasource.setTestWhileIdle(testWhileIdle);
-		datasource.setTestOnBorrow(testOnBorrow);
-		datasource.setTestOnReturn(testOnReturn);
+		datasource.setUrl(this.dbUrl);
+		datasource.setUsername(this.username);
+		datasource.setPassword(this.password);
+		datasource.setDriverClassName(this.driverClassName);
+		datasource.setInitialSize(this.initialSize);
+		datasource.setMinIdle(this.minIdle);
+		datasource.setMaxActive(this.maxActive);
+		datasource.setMaxWait(this.maxWait);
+		datasource.setTimeBetweenEvictionRunsMillis(this.timeBetweenEvictionRunsMillis);
+		datasource.setMinEvictableIdleTimeMillis(this.minEvictableIdleTimeMillis);
+		datasource.setValidationQuery(this.validationQuery);
+		datasource.setTestWhileIdle(this.testWhileIdle);
+		datasource.setTestOnBorrow(this.testOnBorrow);
+		datasource.setTestOnReturn(this.testOnReturn);
 		try {
-			datasource.setFilters(filters);
+			datasource.setFilters(this.filters);
 		} catch (SQLException e) {
 			logger.error("druid configuration initialization filter", e);
 		}
 		return datasource;
 	}
-
 }
